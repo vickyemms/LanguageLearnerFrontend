@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCog } from "react-icons/fa";
+import { FaCog, FaUser } from "react-icons/fa";
 import "../styles/Navbar.css";
 
 const Navbar = ({ selectedItem, onNavClick, onSettingsClick }) => (
@@ -28,6 +28,12 @@ const Navbar = ({ selectedItem, onNavClick, onSettingsClick }) => (
           Adjectives
         </li>
         <li
+          className={`nav-item ${selectedItem === "phrases" ? "active" : ""}`}
+          onClick={() => onNavClick("phrases")}
+        >
+          Phrases
+        </li>
+        <li
           className={`nav-item ${selectedItem === "functions" ? "active" : ""}`}
           onClick={() => onNavClick("functions")}
         >
@@ -35,7 +41,10 @@ const Navbar = ({ selectedItem, onNavClick, onSettingsClick }) => (
         </li>
       </ul>
     </nav>
-    <FaCog className="settings-icon" onClick={onSettingsClick} />
+    <div>
+      <FaUser className="icon-buttons" onClick={onSettingsClick} />
+      <FaCog className="icon-buttons" onClick={onSettingsClick} />
+    </div>
   </header>
 );
 

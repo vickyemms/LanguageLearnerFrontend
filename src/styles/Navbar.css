@@ -45,17 +45,17 @@ header {
   color: black;
 }
 
-.settings-icon {
+.icon-buttons {
   font-size: 2rem;
   cursor: pointer;
   margin: 10px;
   color: #000000;
 }
 
-.settings-icon:hover {
+.icon-buttons :hover {
   color: #2c2c2c;
 }
 
-.settings-icon:active {
+.icon-buttons :active {
   color: #646464;
 }
