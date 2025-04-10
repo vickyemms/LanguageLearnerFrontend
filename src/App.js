@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./styles/App.css";
 import Navbar from "./components/Navbar";
-import Settings from "./components/Settings";
+import UserDrawer from "./components/UserDrawer";
+import SettingsDrawer from "./components/SettingsDrawer";
 import Nouns from "./components/Nouns";
 import Verbs from "./components/Verbs";
 import Adjectives from "./components/Adjectives";
@@ -10,7 +11,8 @@ import Functions from "./components/Functions";
 
 function App() {
   const [selectedItem, setSelectedItem] = useState("nouns");
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
+  const [isSettingsDrawerOpen, setIsSettingsDrawerOpen] = useState(false);
 
   const handleNavClick = (item) => {
     setSelectedItem(item);
@@ -33,12 +35,20 @@ function App() {
     }
   };
 
-  const handleSettingsClick = () => {
-    setIsSettingsOpen(true);
+  const handleUserDrawerClick = () => {
+    setIsUserDrawerOpen(true);
   };
 
-  const closeSettings = () => {
-    setIsSettingsOpen(false);
+  const closeUserDrawer = () => {
+    setIsUserDrawerOpen(false);
+  };
+
+  const handleSettingsDrawerClick = () => {
+    setIsSettingsDrawerOpen(true);
+  };
+
+  const closeSettingsDrawer = () => {
+    setIsSettingsDrawerOpen(false);
   };
 
   return (
@@ -46,10 +56,15 @@ function App() {
       <Navbar
         selectedItem={selectedItem}
         onNavClick={handleNavClick}
-        onSettingsClick={handleSettingsClick}
+        onUserDrawerClick={handleUserDrawerClick}
+        onSettingsDrawerClick={handleSettingsDrawerClick}
       />
       <div className="main-content">{renderContent()}</div>
-      <Settings isOpen={isSettingsOpen} onClose={closeSettings} />
+      <UserDrawer isOpen={isUserDrawerOpen} onClose={closeUserDrawer} />
+      <SettingsDrawer
+        isOpen={isSettingsDrawerOpen}
+        onClose={closeSettingsDrawer}
+      />
     </div>
   );
 }

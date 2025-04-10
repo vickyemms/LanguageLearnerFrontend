@@ -1,46 +1,5 @@
-.popup-overlay.open {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.settings-drawer {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  height: 100%;
-  width: 300px;
-  background-color: rgb(173, 134, 212);
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-  padding: 1.5rem;
-  transition: right 0.3s ease-in-out;
-  z-index: 1000;
-}
-
-.settings-drawer.open {
-  right: 0;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-.settings-header {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.settings-section {
-  margin-top: 1.5rem;
+.change-items {
+  margin-top: 3rem;
 }
 
 .language-select {
@@ -50,4 +9,42 @@
   border-radius: 6px;
   border: 1px solid #ccc;
   margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.change-btns {
+  width: 75%;
+  background-color: #fff;
+  color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.change-btns:hover {
+  background-color: #d0c6c6;
+}
+
+.signout-wrapper {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.sign-out-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.sign-out-btn:hover {
+  color: #ffdede;
 }

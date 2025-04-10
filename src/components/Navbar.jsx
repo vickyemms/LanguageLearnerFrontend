@@ -2,7 +2,12 @@ import React from "react";
 import { FaCog, FaUser } from "react-icons/fa";
 import "../styles/Navbar.css";
 
-const Navbar = ({ selectedItem, onNavClick, onSettingsClick }) => (
+const Navbar = ({
+  selectedItem,
+  onNavClick,
+  onUserDrawerClick,
+  onSettingsDrawerClick,
+}) => (
   <header>
     <h1 className="logo">Polyglot</h1>
     <nav className="nav-bar">
@@ -42,8 +47,8 @@ const Navbar = ({ selectedItem, onNavClick, onSettingsClick }) => (
       </ul>
     </nav>
     <div>
-      <FaUser className="icon-buttons" onClick={onSettingsClick} />
-      <FaCog className="icon-buttons" onClick={onSettingsClick} />
+      <FaUser className="icon-buttons" onClick={onUserDrawerClick} />
+      <FaCog className="icon-buttons" onClick={onSettingsDrawerClick} />
     </div>
   </header>
 );
