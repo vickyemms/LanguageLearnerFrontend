@@ -29,23 +29,20 @@ const SettingsDrawer = ({ isOpen, onClose }) => {
               <option value="hungarian">Hungarian</option>
             </select>
           </div>
-          <div className="change-items">
+          <div className="setting-btns-items">
             <div className="drawer-item">
-              <button className="change-btns" onClick={onClose}>
-                Change e-mail
-              </button>
+              <button className="change-btns">Change e-mail</button>
             </div>
             <div className="drawer-item">
-              <button className="change-btns" onClick={onClose}>
-                Change password
-              </button>
+              <button className="change-btns">Change password</button>
+            </div>
+            <div className="drawer-item">
+              <button className="delete-btn">Delete profile</button>
             </div>
           </div>
         </div>
         <div className="signout-wrapper">
-          <button className="sign-out-btn" onClick={onClose}>
-            Sign out
-          </button>
+          <button className="sign-out-btn">Sign out</button>
         </div>
       </div>
     </div>

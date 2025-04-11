@@ -6,12 +6,32 @@ const Login = ({ onLoginSuccess }) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (username === "sven_svensson@gmail.com" && password === "password123") {
-      onLoginSuccess();
-    } else {
+    const loginRequest = {
+      email: username,
+      password: password,
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginRequest),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || "Invalid credentials");
+      } else {
+        const user = await response.json();
+        onLoginSuccess(user);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
       setErrorMessage("Invalid username or password");
     }
   };
