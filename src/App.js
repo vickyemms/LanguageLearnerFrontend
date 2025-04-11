@@ -12,12 +12,14 @@ import Functions from "./components/Functions";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
   const [selectedItem, setSelectedItem] = useState("nouns");
   const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
   const [isSettingsDrawerOpen, setIsSettingsDrawerOpen] = useState(false);
 
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = (user) => {
     setIsLoggedIn(true);
+    setUserDetails(user);
   };
 
   const handleNavClick = (item) => {
@@ -70,7 +72,11 @@ function App() {
             onSettingsDrawerClick={handleSettingsDrawerClick}
           />
           <div className="main-content">{renderContent()}</div>
-          <UserDrawer isOpen={isUserDrawerOpen} onClose={closeUserDrawer} />
+          <UserDrawer
+            isOpen={isUserDrawerOpen}
+            onClose={closeUserDrawer}
+            userDetails={userDetails}
+          />
           <SettingsDrawer
             isOpen={isSettingsDrawerOpen}
             onClose={closeSettingsDrawer}

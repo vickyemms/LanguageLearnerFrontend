@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Drawer.css";
 
-const UserDrawer = ({ isOpen, onClose }) => {
+const UserDrawer = ({ isOpen, onClose, userDetails }) => {
   return (
     <div className={`popup-overlay ${isOpen ? "open" : ""}`}>
       <div className={`popup-drawer ${isOpen ? "open" : ""}`}>
@@ -12,11 +12,11 @@ const UserDrawer = ({ isOpen, onClose }) => {
         <div className="drawer-section">
           <div className="drawer-item">
             <h4>E-mail</h4>
-            <p>sven_svensson@gmail.com</p>
+            <p>{userDetails?.email || "No email available"}</p>
           </div>
           <div className="drawer-item">
             <h4>Level</h4>
-            <p>A1</p>
+            <p>{userDetails?.level || "No level available"}</p>
           </div>
         </div>
       </div>
