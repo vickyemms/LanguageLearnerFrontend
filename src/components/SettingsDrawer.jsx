@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Drawer.css";
 import "../styles/Settings.css";
 
-const SettingsDrawer = ({ isOpen, onClose }) => {
+const SettingsDrawer = ({ isOpen, onClose, onSignOut }) => {
   return (
     <div className={`popup-overlay ${isOpen ? "open" : ""}`}>
       <div className={`popup-drawer ${isOpen ? "open" : ""}`}>
@@ -42,7 +42,9 @@ const SettingsDrawer = ({ isOpen, onClose }) => {
           </div>
         </div>
         <div className="signout-wrapper">
-          <button className="sign-out-btn">Sign out</button>
+          <button className="sign-out-btn" onClick={onSignOut}>
+            Sign out
+          </button>
         </div>
       </div>
     </div>

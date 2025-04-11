@@ -59,6 +59,12 @@ function App() {
     setIsSettingsDrawerOpen(false);
   };
 
+  const handleSignOut = () => {
+    setIsSettingsDrawerOpen(false);
+    setIsLoggedIn(false);
+    setUserDetails(null);
+  };
+
   return (
     <div className="App">
       {!isLoggedIn ? (
@@ -80,6 +86,7 @@ function App() {
           <SettingsDrawer
             isOpen={isSettingsDrawerOpen}
             onClose={closeSettingsDrawer}
+            onSignOut={handleSignOut}
           />
         </>
       )}
