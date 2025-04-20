@@ -45,7 +45,7 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
         <form className="login-form" onSubmit={handleSubmit}>
           <h2 className="login-header">Login</h2>
           <div className="login-form-items">
-            <div className="login-input-group">
+            <div>
               <label htmlFor="email">Email:</label>
               <input
                 className="login-input"
@@ -56,7 +56,7 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
                 required
               />
             </div>
-            <div className="login-input-group">
+            <div>
               <label htmlFor="password">Password:</label>
               <input
                 className="login-input"
