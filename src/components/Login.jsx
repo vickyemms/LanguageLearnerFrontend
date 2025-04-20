@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
 
-const Login = ({ onLoginSuccess }) => {
+const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -45,7 +45,7 @@ const Login = ({ onLoginSuccess }) => {
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="login-input-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Email:</label>
             <input
               className="login-input"
               type="text"
@@ -70,7 +70,9 @@ const Login = ({ onLoginSuccess }) => {
             <button className="login-btn" type="submit">
               Log In
             </button>
-            <button className="signup-btn">Sign up</button>
+            <button className="signup-btn" onClick={onSwitchToSignup}>
+              Sign up
+            </button>
           </div>
         </form>
         {errorMessage && <div className="error">{errorMessage}</div>}

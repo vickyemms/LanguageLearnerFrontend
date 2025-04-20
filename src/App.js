@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles/App.css";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import UserDrawer from "./components/UserDrawer";
 import SettingsDrawer from "./components/SettingsDrawer";
@@ -12,6 +13,7 @@ import Functions from "./components/Functions";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSignupMode, setIsSignupMode] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
   const [selectedItem, setSelectedItem] = useState("nouns");
   const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
@@ -68,7 +70,17 @@ function App() {
   return (
     <div className="App">
       {!isLoggedIn ? (
-        <Login onLoginSuccess={handleLoginSuccess} />
+        isSignupMode ? (
+          <Signup
+            onSignupSuccess={handleLoginSuccess}
+            onSwitchToLogin={() => setIsSignupMode(false)}
+          />
+        ) : (
+          <Login
+            onLoginSuccess={handleLoginSuccess}
+            onSwitchToSignup={() => setIsSignupMode(true)}
+          />
+        )
       ) : (
         <>
           <Navbar
