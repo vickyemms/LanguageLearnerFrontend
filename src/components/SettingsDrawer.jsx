@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/Drawer.css";
-import "../styles/Settings.css";
+import "../styles/drawer.css";
+import "../styles/settings.css";
 
 const SettingsDrawer = ({ isOpen, onClose, onSignOut }) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCog, FaUser } from "react-icons/fa";
-import "../styles/Navbar.css";
+import "../styles/navbar.css";
 
 const Navbar = ({
   selectedItem,

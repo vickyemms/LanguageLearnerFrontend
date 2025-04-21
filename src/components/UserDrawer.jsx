@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Drawer.css";
+import "../styles/drawer.css";
 
 const UserDrawer = ({ isOpen, onClose, userDetails }) => {
   return (
