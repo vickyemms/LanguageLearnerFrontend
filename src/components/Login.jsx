@@ -4,6 +4,7 @@ import "../styles/auth-forms.css";
 const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
@@ -32,8 +33,12 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
       }
     } catch (error) {
       console.error("Error during login:", error);
-      setErrorMessage("Invalid username or password");
+      setErrorMessage("Invalid email or password");
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
   };
 
   return (
@@ -56,16 +61,23 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
                 required
               />
             </div>
-            <div>
+            <div className="password-container">
               <label htmlFor="password">Password:</label>
               <input
                 className="login-input"
-                type="password"
+                type={isPasswordVisible ? "text" : "password"}
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={togglePasswordVisibility}
+              >
+                {isPasswordVisible ? "Hide" : "Show"}
+              </button>
             </div>
             <div className="login-btns">
               <button className="login-btn" type="submit">
