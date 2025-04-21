@@ -44,7 +44,12 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
 
       if (!response.ok) {
         const errorText = await response.text();
-        setErrorMessage(errorText || "Registration failed.");
+
+        if (response.status === 409 || errorText.includes("Email already")) {
+          setErrorMessage("This email is already registered.");
+        } else {
+          setErrorMessage(errorText || "Registration failed.");
+        }
       } else {
         const createdUser = await response.json();
         onSignupSuccess(createdUser);
