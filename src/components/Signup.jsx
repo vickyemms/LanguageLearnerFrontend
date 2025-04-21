@@ -4,8 +4,12 @@ import "../styles/auth-forms.css";
 const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [level, setLevel] = useState("A1");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,63 +42,93 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+  };
+
   return (
-    <div className="login-container">
+    <div>
       <header>
         <h1 className="logo">Polyglot</h1>
       </header>
-      <div className="login-form">
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="login-input-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              className="login-input"
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="login-input-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              className="login-input"
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="login-input-group">
-            <label htmlFor="level">Level:</label>
-            <select
-              className="login-input"
-              id="level"
-              value={level}
-              onChange={(e) => setLevel(e.target.value)}
-            >
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
-            </select>
-          </div>
-          <div className="login-btns">
-            <button className="login-btn" type="submit">
-              Sign Up
-            </button>
-            <button
-              className="signup-btn"
-              type="button"
-              onClick={onSwitchToLogin}
-            >
-              Back to Login
-            </button>
+      <div>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h2 className="login-header">Sign up</h2>
+          <div className="login-form-items">
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input
+                className="login-input"
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="password-container">
+              <label htmlFor="password">Password:</label>
+              <input
+                className="login-input"
+                type={isPasswordVisible ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={togglePasswordVisibility}
+              >
+                {isPasswordVisible ? "Hide" : "Show"}
+              </button>
+            </div>
+            <div className="password-container">
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <input
+                className="login-input"
+                type={isConfirmPasswordVisible ? "text" : "password"}
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={toggleConfirmPasswordVisibility}
+              >
+                {isConfirmPasswordVisible ? "Hide" : "Show"}
+              </button>
+            </div>
+            <div>
+              <p className="password-requirements">
+                Password must be at least 8 characters long and contain at least
+                one uppercase letter, one lowercase letter, one number, and one
+                special character.
+              </p>
+            </div>
+            <div className="login-btns">
+              <button className="login-btn" type="submit">
+                Sign Up
+              </button>
+              <button
+                className="signup-btn"
+                type="button"
+                onClick={onSwitchToLogin}
+              >
+                Back to Login
+              </button>
+            </div>
+
+            {errorMessage && <div className="error">{errorMessage}</div>}
           </div>
         </form>
-        {errorMessage && <div className="error">{errorMessage}</div>}
       </div>
     </div>
   );
