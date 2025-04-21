@@ -84,4 +84,15 @@
   font-weight: bold;
   color: rgb(200, 23, 23);
   margin-top: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.error.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.error.visible {
+  opacity: 1;
+  visibility: visible;
 }

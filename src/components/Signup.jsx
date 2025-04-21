@@ -14,6 +14,19 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>/?]).{8,}$/;
+
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      setErrorMessage("Password does not meet requirements.");
+      return;
+    }
+
     const newUser = {
       email,
       password,
@@ -125,8 +138,9 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
                 Back to Login
               </button>
             </div>
-
-            {errorMessage && <div className="error">{errorMessage}</div>}
+            <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
+              {errorMessage || " "}
+            </div>
           </div>
         </form>
       </div>
