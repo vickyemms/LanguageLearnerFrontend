@@ -47,13 +47,13 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
         <h1 className="logo">Polyglot</h1>
       </header>
       <div>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2 className="login-header">Login</h2>
-          <div className="login-form-items">
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <h2 className="auth-header">Login</h2>
+          <div className="auth-form-items">
             <div>
               <label htmlFor="email">Email:</label>
               <input
-                className="login-input"
+                className="auth-input"
                 type="email"
                 id="email"
                 value={email}
@@ -64,7 +64,7 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
             <div className="password-container">
               <label htmlFor="password">Password:</label>
               <input
-                className="login-input"
+                className="auth-input"
                 type={isPasswordVisible ? "text" : "password"}
                 id="password"
                 value={password}
@@ -79,7 +79,7 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
                 {isPasswordVisible ? "Hide" : "Show"}
               </button>
             </div>
-            <div className="login-btns">
+            <div className="auth-btns">
               <button className="login-btn" type="submit">
                 Log In
               </button>

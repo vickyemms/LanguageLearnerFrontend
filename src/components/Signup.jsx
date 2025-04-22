@@ -74,13 +74,13 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
         <h1 className="logo">Polyglot</h1>
       </header>
       <div>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2 className="login-header">Sign up</h2>
-          <div className="login-form-items">
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <h2 className="auth-header">Sign up</h2>
+          <div className="auth-form-items">
             <div>
               <label htmlFor="email">Email:</label>
               <input
-                className="login-input"
+                className="auth-input"
                 type="email"
                 id="email"
                 value={email}
@@ -91,7 +91,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
             <div className="password-container">
               <label htmlFor="password">Password:</label>
               <input
-                className="login-input"
+                className="auth-input"
                 type={isPasswordVisible ? "text" : "password"}
                 id="password"
                 value={password}
@@ -109,7 +109,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
             <div className="password-container">
               <label htmlFor="confirmPassword">Confirm Password:</label>
               <input
-                className="login-input"
+                className="auth-input"
                 type={isConfirmPasswordVisible ? "text" : "password"}
                 id="confirmPassword"
                 value={confirmPassword}
@@ -131,12 +131,12 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
                 special character.
               </p>
             </div>
-            <div className="login-btns">
-              <button className="login-btn" type="submit">
+            <div className="auth-btns">
+              <button className="register-btn" type="submit">
                 Sign Up
               </button>
               <button
-                className="signup-btn"
+                className="back-to-login-btn"
                 type="button"
                 onClick={onSwitchToLogin}
               >
