@@ -5,7 +5,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [level, setLevel] = useState("A1");
+  const level = "A1";
   const [errorMessage, setErrorMessage] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
@@ -15,7 +15,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
     event.preventDefault();
 
     const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>/?]).{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]:;"',.<>?/\\|]).{8,}$/;
 
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match.");
