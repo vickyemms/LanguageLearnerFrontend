@@ -73,7 +73,9 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
   return (
     <div>
       <header>
-        <h1 className="logo">Polyglot</h1>
+        <h1 className="logo" onClick={onSwitchToLogin}>
+          Polyglot
+        </h1>
       </header>
       {!isSubmitted ? (
         <div>
