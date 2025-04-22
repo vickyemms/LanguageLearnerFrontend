@@ -10,6 +10,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,7 +53,8 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
         }
       } else {
         const createdUser = await response.json();
-        onSignupSuccess(createdUser);
+        setIsSubmitted(true);
+        //onSignupSuccess(createdUser);
       }
     } catch (error) {
       console.error("Error during signup:", error);
@@ -73,82 +75,93 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
       <header>
         <h1 className="logo">Polyglot</h1>
       </header>
-      <div>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <h2 className="auth-header">Sign up</h2>
-          <div className="auth-form-items">
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                className="auth-input"
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+      {!isSubmitted ? (
+        <div>
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <h2 className="auth-header">Sign up</h2>
+            <div className="auth-form-items">
+              <div>
+                <label htmlFor="email">Email:</label>
+                <input
+                  className="auth-input"
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="password-container">
+                <label htmlFor="password">Password:</label>
+                <input
+                  className="auth-input"
+                  type={isPasswordVisible ? "text" : "password"}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password"
+                  onClick={togglePasswordVisibility}
+                >
+                  {isPasswordVisible ? "Hide" : "Show"}
+                </button>
+              </div>
+              <div className="password-container">
+                <label htmlFor="confirmPassword">Confirm Password:</label>
+                <input
+                  className="auth-input"
+                  type={isConfirmPasswordVisible ? "text" : "password"}
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="toggle-password"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  {isConfirmPasswordVisible ? "Hide" : "Show"}
+                </button>
+              </div>
+              <div>
+                <p className="password-requirements">
+                  Password must be at least 8 characters long and contain at
+                  least one uppercase letter, one lowercase letter, one number,
+                  and one special character.
+                </p>
+              </div>
+              <div className="auth-btns">
+                <button className="register-btn" type="submit">
+                  Sign Up
+                </button>
+                <button
+                  className="back-to-login-btn"
+                  type="button"
+                  onClick={onSwitchToLogin}
+                >
+                  Back to Login
+                </button>
+              </div>
+              <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
+                {errorMessage || " "}
+              </div>
             </div>
-            <div className="password-container">
-              <label htmlFor="password">Password:</label>
-              <input
-                className="auth-input"
-                type={isPasswordVisible ? "text" : "password"}
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <button
-                type="button"
-                className="toggle-password"
-                onClick={togglePasswordVisibility}
-              >
-                {isPasswordVisible ? "Hide" : "Show"}
-              </button>
-            </div>
-            <div className="password-container">
-              <label htmlFor="confirmPassword">Confirm Password:</label>
-              <input
-                className="auth-input"
-                type={isConfirmPasswordVisible ? "text" : "password"}
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-              <button
-                type="button"
-                className="toggle-password"
-                onClick={toggleConfirmPasswordVisibility}
-              >
-                {isConfirmPasswordVisible ? "Hide" : "Show"}
-              </button>
-            </div>
-            <div>
-              <p className="password-requirements">
-                Password must be at least 8 characters long and contain at least
-                one uppercase letter, one lowercase letter, one number, and one
-                special character.
-              </p>
-            </div>
-            <div className="auth-btns">
-              <button className="register-btn" type="submit">
-                Sign Up
-              </button>
-              <button
-                className="back-to-login-btn"
-                type="button"
-                onClick={onSwitchToLogin}
-              >
-                Back to Login
-              </button>
-            </div>
-            <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
-              {errorMessage || " "}
-            </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      ) : (
+        <div className="confirmation-message-container">
+          <h2>Thanks for signing up!</h2>
+          <p className="confirmation-message">
+            We've sent a confirmation link to <strong>{email}</strong>. Please
+            check your inbox and follow the instructions to verify your email
+            address. If you don’t see it, check your spam or junk folder.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

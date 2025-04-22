@@ -100,3 +100,17 @@
   opacity: 1;
   visibility: visible;
 }
+
+.confirmation-message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.confirmation-message {
+  max-width: 400px;
+  margin-top: 1rem;
+  line-height: 1.4;
+}
