@@ -87,22 +87,28 @@
   background-color: rgb(27, 48, 140);
 }
 
-.error {
-  max-width: 400px;
+.message-container {
+  position: relative;
+  width: 400px;
+}
+
+.error,
+.success {
+  position: absolute;
+  top: 0;
+  left: 0;
   font-size: large;
   font-weight: bold;
-  color: rgb(200, 23, 23);
   margin-top: 1rem;
   transition: opacity 0.2s ease;
 }
 
+.error {
+  color: rgb(200, 23, 23);
+}
+
 .success {
-  max-width: 400px;
-  font-size: large;
-  font-weight: bold;
   color: rgb(29, 133, 64);
-  margin-top: 1rem;
-  transition: opacity 0.2s ease;
 }
 
 .error.hidden,
