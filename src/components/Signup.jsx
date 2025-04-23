@@ -7,6 +7,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const level = "A1";
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
@@ -54,6 +55,7 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
       } else {
         const createdUser = await response.json();
         setIsSubmitted(true);
+        setErrorMessage("");
         //onSignupSuccess(createdUser);
       }
     } catch (error) {
@@ -68,6 +70,47 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
 
   const toggleConfirmPasswordVisibility = () => {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+  };
+
+  const handleResendVerification = async () => {
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    try {
+      const response = await fetch(
+        "http://localhost:8080/resend-verification",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const message = await response.text();
+
+      if (!response.ok) {
+        if (message.includes("already been sent") || response.status === 429) {
+          setSuccessMessage("");
+          setErrorMessage(
+            "A verification email has already been sent. Please wait a few minutes before trying again."
+          );
+        } else {
+          setSuccessMessage("");
+          setErrorMessage(message || "Failed to resend verification email.");
+        }
+      } else {
+        setErrorMessage("");
+        setSuccessMessage(
+          "Verification email resent successfully. Please check your inbox."
+        );
+      }
+    } catch (error) {
+      console.error("Resend error:", error);
+      setSuccessMessage("");
+      setErrorMessage("Something went wrong. Please try again later.");
+    }
   };
 
   return (
@@ -158,10 +201,25 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
         <div className="confirmation-message-container">
           <h2>Thanks for signing up!</h2>
           <p className="confirmation-message">
-            We've sent a confirmation link to <strong>{email}</strong>. Please
-            check your inbox and follow the instructions to verify your email
-            address. If you don’t see it, check your spam or junk folder.
+            We've sent a confirmation link to <strong>{email}</strong>. Before
+            you can log in, please check your inbox and follow the instructions
+            to verify your email address. If you don’t see it, check your spam
+            or junk folder.
           </p>
+          <button
+            className="resend-verification-btn"
+            onClick={handleResendVerification}
+          >
+            Resend
+          </button>
+          <div className="message-container">
+            <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
+              {errorMessage || " "}
+            </div>
+            <div className={`success ${successMessage ? "visible" : "hidden"}`}>
+              {successMessage || " "}
+            </div>
+          </div>
         </div>
       )}
     </div>

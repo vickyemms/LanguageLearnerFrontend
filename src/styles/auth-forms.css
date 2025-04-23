@@ -88,6 +88,7 @@
 }
 
 .error {
+  max-width: 400px;
   font-size: large;
   font-weight: bold;
   color: rgb(200, 23, 23);
@@ -95,12 +96,23 @@
   transition: opacity 0.2s ease;
 }
 
-.error.hidden {
+.success {
+  max-width: 400px;
+  font-size: large;
+  font-weight: bold;
+  color: rgb(29, 133, 64);
+  margin-top: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.error.hidden,
+.success.hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-.error.visible {
+.error.visible,
+.success.visible {
   opacity: 1;
   visibility: visible;
 }
@@ -117,4 +129,16 @@
   max-width: 400px;
   margin-top: 1rem;
   line-height: 1.4;
+}
+
+.resend-verification-btn {
+  padding: 10px 20px;
+  background-color: rgb(86, 92, 119);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.resend-verification-btn:hover {
+  background-color: rgb(60, 64, 82);
 }
