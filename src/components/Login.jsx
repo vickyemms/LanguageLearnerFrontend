@@ -87,8 +87,10 @@ const Login = ({ onLoginSuccess, onSwitchToSignup }) => {
                 Sign up
               </button>
             </div>
-            <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
-              {errorMessage || " "}
+            <div className="error-n-success-message">
+              <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
+                {errorMessage || " "}
+              </div>
             </div>
           </div>
         </form>

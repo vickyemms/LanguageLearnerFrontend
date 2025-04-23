@@ -191,8 +191,10 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
                   Back to Login
                 </button>
               </div>
-              <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
-                {errorMessage || " "}
+              <div className="error-n-success-message">
+                <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
+                  {errorMessage || " "}
+                </div>
               </div>
             </div>
           </form>
@@ -212,13 +214,16 @@ const Signup = ({ onSignupSuccess, onSwitchToLogin }) => {
           >
             Resend
           </button>
-          <div className="message-container">
-            <div className={`error ${errorMessage ? "visible" : "hidden"}`}>
-              {errorMessage || " "}
-            </div>
-            <div className={`success ${successMessage ? "visible" : "hidden"}`}>
-              {successMessage || " "}
-            </div>
+          <div
+            className={`error-n-success-message ${
+              errorMessage
+                ? "error visible"
+                : successMessage
+                ? "success visible"
+                : "hidden"
+            }`}
+          >
+            {errorMessage || successMessage || "\u00A0"}
           </div>
         </div>
       )}

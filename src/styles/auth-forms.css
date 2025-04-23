@@ -87,16 +87,8 @@
   background-color: rgb(27, 48, 140);
 }
 
-.message-container {
-  position: relative;
-  width: 400px;
-}
-
-.error,
-.success {
-  position: absolute;
-  top: 0;
-  left: 0;
+.error-n-success-message {
+  max-width: 400px;
   font-size: large;
   font-weight: bold;
   margin-top: 1rem;
@@ -138,6 +130,7 @@
 }
 
 .resend-verification-btn {
+  margin-top: 1rem;
   padding: 10px 20px;
   background-color: rgb(86, 92, 119);
   color: white;
