@@ -1,0 +1,26 @@
+.verification-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+.verification-header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.go-to-login-btn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: rgb(44, 70, 186);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.go-to-login-btn:hover {
+  background-color: rgb(27, 48, 140);
+}

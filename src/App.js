@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles/App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import EmailVerification from "./components/EmailVerification";
 import Navbar from "./components/Navbar";
 import UserDrawer from "./components/UserDrawer";
 import SettingsDrawer from "./components/SettingsDrawer";
@@ -70,7 +71,9 @@ function App() {
   return (
     <div className="App">
       {!isLoggedIn ? (
-        isSignupMode ? (
+        window.location.search.includes("token=") ? (
+          <EmailVerification onSwitchToLogin={() => setIsSignupMode(false)} />
+        ) : isSignupMode ? (
           <Signup
             onSignupSuccess={handleLoginSuccess}
             onSwitchToLogin={() => setIsSignupMode(false)}
