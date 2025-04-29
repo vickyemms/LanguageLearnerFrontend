@@ -13,6 +13,7 @@ import Phrases from "./components/Phrases";
 import Functions from "./components/Functions";
 
 function App() {
+  const [showVerification, setShowVerification] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignupMode, setIsSignupMode] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
@@ -71,8 +72,13 @@ function App() {
   return (
     <div className="App">
       {!isLoggedIn ? (
-        window.location.search.includes("token=") ? (
-          <EmailVerification onSwitchToLogin={() => setIsSignupMode(false)} />
+        window.location.search.includes("token=") && showVerification ? (
+          <EmailVerification
+            onSwitchToLogin={() => {
+              window.history.replaceState(null, "", window.location.pathname);
+              setShowVerification(false);
+            }}
+          />
         ) : isSignupMode ? (
           <Signup
             onSignupSuccess={handleLoginSuccess}

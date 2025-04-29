@@ -22,16 +22,18 @@ const EmailVerification = ({ onSwitchToLogin }) => {
       const response = await fetch(
         `http://localhost:8080/users/verify-email?token=${token}`
       );
-      const text = await response.text();
 
       if (response.ok) {
+        const text = await response.text();
         setStatus("success");
         setMessage(
-          "Your email has been successfully verified. You can now log in."
+          text ||
+            "Your email has been successfully verified. You can now log in."
         );
       } else {
+        const errorText = await response.text();
         setStatus("error");
-        setMessage(text || "Verification failed.");
+        setMessage(errorText || "Verification failed.");
       }
     } catch (err) {
       console.error("Verification error:", err);
