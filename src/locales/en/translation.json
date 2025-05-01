@@ -7,6 +7,7 @@
     "functions": "Functions"
   },
   "settings": {
+    "settings": "Settings",
     "sourceLanguage": "Source Language",
     "targetLanguage": "Target Language",
     "signOut": "Sign out",
@@ -21,11 +22,14 @@
     "nounPhrase": "Noun Phrase",
     "quizMode": "Quiz Mode",
     "word": "Word",
-    "sentence": "Sentence"
+    "sentence": "Sentence",
+    "nouns": "Nouns"
   },
   "profile": {
     "email": "E-mail",
     "level": "Level",
-    "profile": "Profile"
+    "profile": "Profile",
+    "noEmail": "No email available",
+    "noLevel": "No level available"
   }
 }

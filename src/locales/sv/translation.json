@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "nouns": "Substantiv",
+    "verbs": "Verb",
+    "adjectives": "Adjektiv",
+    "phrases": "Fraser",
+    "functions": "Funktioner"
+  },
+  "settings": {
+    "settings": "Inställningar",
+    "sourceLanguage": "Källspråk",
+    "targetLanguage": "Målspråk",
+    "signOut": "Logga ut",
+    "changeEmail": "Ändra e-post",
+    "changePassword": "Byt lösenord",
+    "deleteProfile": "Ta bort profil"
+  },
+  "quiz": {
+    "start": "Starta quiz",
+    "level": "Nivå",
+    "category": "Kategori",
+    "nounPhrase": "Substantivfras",
+    "quizMode": "Quizläge",
+    "word": "Ord",
+    "sentence": "Mening",
+    "nouns": "Substantiv"
+  },
+  "profile": {
+    "email": "E-post",
+    "level": "Nivå",
+    "profile": "Profil",
+    "noEmail": "Inget e-postmeddelande tillgängligt",
+    "noLevel": "Ingen nivå tillgänglig"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "nouns": "Sustantivos",
+    "verbs": "Verbos",
+    "adjectives": "Adjetivos",
+    "phrases": "Frases",
+    "functions": "Funciones"
+  },
+  "settings": {
+    "settings": "Configuración",
+    "sourceLanguage": "Idioma de origen",
+    "targetLanguage": "Idioma de destino",
+    "signOut": "Cerrar sesión",
+    "changeEmail": "Cambiar correo electrónico",
+    "changePassword": "Cambiar contraseña",
+    "deleteProfile": "Eliminar perfil"
+  },
+  "quiz": {
+    "start": "Iniciar quiz",
+    "level": "Nivel",
+    "category": "Categoría",
+    "nounPhrase": "Frase nominal",
+    "quizMode": "Modo de quiz",
+    "word": "Palabra",
+    "sentence": "Oración",
+    "nouns": "Sustantivos"
+  },
+  "profile": {
+    "email": "Correo electrónico",
+    "level": "Nivel",
+    "profile": "Perfil",
+    "noEmail": "No hay correo disponible",
+    "noLevel": "No hay nivel disponible"
+  }
+}

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../styles/quiz.css";
+import { useTranslation } from "react-i18next";
 
 const Nouns = ({ sourceLang, targetLang }) => {
+  const { t } = useTranslation();
+
   const [nouns, setNouns] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState("A1");
   const [selectedCategory, setSelectedCategory] = useState("animal");
@@ -35,10 +38,10 @@ const Nouns = ({ sourceLang, targetLang }) => {
 
   return (
     <div>
-      <h2>Nouns</h2>
+      <h2>{t("quiz.nouns")}</h2>
       <div className="quiz-settings-container">
         <div className="quiz-settings-item">
-          <label>Level:</label>
+          <label>{t("quiz.level")}:</label>
           <select
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
@@ -51,7 +54,7 @@ const Nouns = ({ sourceLang, targetLang }) => {
           </select>
         </div>
         <div className="quiz-settings-item">
-          <label>Category:</label>
+          <label>{t("quiz.category")}:</label>
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -64,7 +67,7 @@ const Nouns = ({ sourceLang, targetLang }) => {
           </select>
         </div>
         <div className="quiz-settings-item">
-          <label>Noun Phrase:</label>
+          <label>{t("quiz.nounPhrase")}:</label>
           <select
             value={selectedPhraseType}
             onChange={(e) => setSelectedPhraseType(e.target.value)}
@@ -77,25 +80,25 @@ const Nouns = ({ sourceLang, targetLang }) => {
           </select>
         </div>
         <div className="quiz-settings-item">
-          <label>Quiz Mode:</label>
+          <label>{t("quiz.quizMode")}:</label>
           <div className="toggle-switch" onClick={toggleQuizMode}>
             <div
               className={`switch-option ${quizMode === "word" ? "active" : ""}`}
             >
-              Word
+              {t("quiz.word")}
             </div>
             <div
               className={`switch-option ${
                 quizMode === "sentence" ? "active" : ""
               }`}
             >
-              Sentence
+              {t("quiz.sentence")}
             </div>
           </div>
         </div>
       </div>
       <div className="quiz-container">
-        <button className="start-quiz-btn">Start Quiz</button>
+        <button className="start-quiz-btn">{t("quiz.start")}</button>
       </div>
     </div>
   );
