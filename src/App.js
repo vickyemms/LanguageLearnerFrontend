@@ -13,13 +13,15 @@ import Phrases from "./components/Phrases";
 import Functions from "./components/Functions";
 
 function App() {
-  const [showVerification, setShowVerification] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignupMode, setIsSignupMode] = useState(false);
+  const [showVerification, setShowVerification] = useState(true);
   const [userDetails, setUserDetails] = useState(null);
   const [selectedItem, setSelectedItem] = useState("nouns");
   const [isUserDrawerOpen, setIsUserDrawerOpen] = useState(false);
   const [isSettingsDrawerOpen, setIsSettingsDrawerOpen] = useState(false);
+  const [sourceLang, setSourceLang] = useState("en");
+  const [targetLang, setTargetLang] = useState("sv");
 
   const handleLoginSuccess = (user) => {
     setIsLoggedIn(true);
@@ -33,7 +35,7 @@ function App() {
   const renderContent = () => {
     switch (selectedItem) {
       case "nouns":
-        return <Nouns />;
+        return <Nouns sourceLang={sourceLang} targetLang={targetLang} />;
       case "verbs":
         return <Verbs />;
       case "adjectives":
@@ -108,6 +110,10 @@ function App() {
             isOpen={isSettingsDrawerOpen}
             onClose={closeSettingsDrawer}
             onSignOut={handleSignOut}
+            sourceLang={sourceLang}
+            targetLang={targetLang}
+            setSourceLang={setSourceLang}
+            setTargetLang={setTargetLang}
           />
         </>
       )}

@@ -2,7 +2,15 @@ import React from "react";
 import "../styles/drawer.css";
 import "../styles/settings.css";
 
-const SettingsDrawer = ({ isOpen, onClose, onSignOut }) => {
+const SettingsDrawer = ({
+  isOpen,
+  onClose,
+  onSignOut,
+  sourceLang,
+  targetLang,
+  setSourceLang,
+  setTargetLang,
+}) => {
   return (
     <div className={`popup-overlay ${isOpen ? "open" : ""}`}>
       <div className={`popup-drawer ${isOpen ? "open" : ""}`}>
@@ -13,20 +21,26 @@ const SettingsDrawer = ({ isOpen, onClose, onSignOut }) => {
         <div className="drawer-section">
           <div className="drawer-item">
             <h4>Source Language</h4>
-            <select className="language-select">
-              <option value="english">English</option>
-              <option value="swedish">Swedish</option>
-              <option value="spanish">Spanish</option>
-              <option value="hungarian">Hungarian</option>
+            <select
+              className="language-select"
+              value={sourceLang}
+              onChange={(e) => setSourceLang(e.target.value)}
+            >
+              <option value="en">English</option>
+              <option value="sv">Swedish</option>
+              <option value="es">Spanish</option>
             </select>
           </div>
           <div className="drawer-item">
             <h4>Target Language</h4>
-            <select className="language-select">
-              <option value="swedish">Swedish</option>
-              <option value="english">English</option>
-              <option value="spanish">Spanish</option>
-              <option value="hungarian">Hungarian</option>
+            <select
+              className="language-select"
+              value={targetLang}
+              onChange={(e) => setTargetLang(e.target.value)}
+            >
+              <option value="sv">Swedish</option>
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
             </select>
           </div>
           <div className="setting-btns-items">

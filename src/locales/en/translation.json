@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "nouns": "Nouns",
+    "verbs": "Verbs",
+    "adjectives": "Adjectives",
+    "phrases": "Phrases",
+    "functions": "Functions"
+  },
+  "settings": {
+    "sourceLanguage": "Source Language",
+    "targetLanguage": "Target Language",
+    "signOut": "Sign out",
+    "changeEmail": "Change e-mail",
+    "changePassword": "Change password",
+    "deleteProfile": "Delete profile"
+  },
+  "quiz": {
+    "start": "Start Quiz",
+    "level": "Level",
+    "category": "Category",
+    "nounPhrase": "Noun Phrase",
+    "quizMode": "Quiz Mode",
+    "word": "Word",
+    "sentence": "Sentence"
+  },
+  "profile": {
+    "email": "E-mail",
+    "level": "Level",
+    "profile": "Profile"
+  }
+}
